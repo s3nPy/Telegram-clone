@@ -1,0 +1,27 @@
+@use '../../sass/button';
+
+.authPage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  background-color: #17212B;
+
+  // & > .header {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: space-between;
+  //   padding: 1rem;
+
+  //   & > .settings {
+  //     @include button.hover(#212B35, #2B353F);
+  //     color: #6AB2F2;
+  //     text-transform: uppercase;
+  //     padding: .5rem;    
+  //   }
+  // }
+
+  & > .body {
+    flex: 1;
+  }
+}

@@ -1,0 +1,44 @@
+$track-color: #212B35;
+$thumb-color: #5D6771;
+$thumb-hover-color: #7B858F;
+
+@mixin init {
+  ::-webkit-scrollbar {
+    width: .25rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $track-color;
+    border-radius: 1rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: 1rem;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: $thumb-hover-color;
+  }
+}
+
+@mixin show {
+  &::-webkit-scrollbar-track {
+    background-color: $track-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb-color;
+  }
+}
+
+
+@mixin hide {
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+}

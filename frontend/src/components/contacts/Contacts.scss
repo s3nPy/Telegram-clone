@@ -1,0 +1,126 @@
+@use '../../sass/input';
+@use '../../sass/button';
+@use '../../sass/scrollbar';
+
+.contacts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+
+  & > .backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 50;
+  }
+
+
+  & > .content {
+    position: relative;
+    width: 375px;
+    height: 70%;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #17212B;
+    z-index: 100;
+
+
+    & > .header {
+      padding: 1rem;
+      box-shadow: 0 1px 1px 0 #101921;
+
+      & > .title {
+        font-size: large;
+        font-weight: 600;
+      }
+
+      & > .search {
+        display: flex;
+        align-items: center;
+        padding-top: 1.5rem;
+
+        & > .MuiSvgIcon-root {
+          opacity: .5;
+        }
+
+        & > input {
+          @include input.reset();
+          flex: 1;
+          margin-left: .5rem;
+        }
+      }
+    }
+
+    & > .body {
+      @include scrollbar.hide();
+      flex: 1;
+      overflow-y: scroll;
+      overflow-x: hidden;
+
+      &:hover {
+        @include scrollbar.show();
+      }
+      
+      & > .empty {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        height: 100%;
+        user-select: none;
+        
+        & > p {
+          background-color: #212B35;
+          border-radius: 1rem;
+          padding: .25rem .5rem;
+        }
+      }
+
+      & > .contact {
+        @include button.hover(#212B35, #353F49);
+        border-radius: 0;
+        display: flex;
+        align-items: center;
+        padding: .5rem 1rem;
+        height: 56px;
+        
+        & > .info {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+
+          height: 100%;
+          padding-left: 1rem;
+          font-size: small;
+
+          & > .last-seen {
+            opacity: .5;
+          }
+        }
+      }
+    }
+
+    & > .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 1rem;
+      box-shadow: 0 -1px 1px 0 #101921;
+      height: 4rem;
+
+      & > button {
+        @include button.hover(#212B35, #353F49);
+        padding: .75rem 1rem;
+        color: #6AB2F2;
+      }
+    }
+  }
+}

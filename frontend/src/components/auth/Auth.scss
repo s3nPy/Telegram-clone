@@ -1,0 +1,93 @@
+@use '../../sass/input';
+@use '../../sass/button';
+
+.auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  max-width: 400px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  color: #EEEEEE;
+
+  & > .header {
+    padding: .5rem 0;
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  & > .hint {
+    padding: .5rem 0 2rem 0;
+    font-size: small;
+    color: #72878A;
+
+    & > .error {
+      color: #8A7272;
+    }
+  }
+
+  & > .link {
+    text-align: center;
+
+    & > .content {
+      color: #6AB2F2;
+      cursor: pointer;
+
+      &:hover {
+        color: #7EC6FF;
+      }
+    }
+  }
+
+  & > form {
+    input {
+      @include input.reset;
+      width: 100%;
+      padding: .5rem 0;
+      margin-bottom: 1.5rem;
+
+      border-bottom: 1px solid rgba(114, 135, 138, .3);
+      font-size: 1.1rem;
+      transition: border-color .4s ease;
+
+      &:focus {
+        border-bottom-color: #2F6EA5;
+      }
+    }
+
+    & > .form-control {
+      margin-bottom: .5rem;
+
+      & > input {
+        margin-bottom: 0;
+      }
+
+      & > .validation {
+        display: flex;
+        align-items: center;
+        padding: .5rem 0;
+        color: #FF000D;
+        opacity: .99;
+        font-size: x-small;
+        height: 2rem;
+      }
+    }
+
+    & > button {
+      @include button.init(#2F6EA5, #3978AF, #4382B9);
+      width: 100%;
+      padding: 1.3rem;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+
+      transition: all .4s ease;
+
+      &:disabled {
+        color: #121921;
+        background-color: #31475C;
+      }
+    }
+  }
+}

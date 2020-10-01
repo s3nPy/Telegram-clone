@@ -1,0 +1,35 @@
+@mixin reset() {
+  user-select: none;
+  border: none;
+  outline: none;
+  background: inherit;
+  color: inherit;
+  cursor: pointer;
+  border-radius: .25rem;
+}
+
+@mixin init($bg-clr, $bg-hvr, $bg-active) {
+  @include hover($bg-hvr, $bg-active);
+  
+  background-color: $bg-clr;
+}
+
+@mixin hover($bg-hvr, $bg-active) {
+  @include reset();
+
+  &:hover {
+    background-color: $bg-hvr;
+  }
+
+  &:active {
+    background-color: $bg-active;
+  }
+
+  &:disabled {
+    color: gray;
+    
+    &:active {
+      background-color: none;
+    }
+  }
+}

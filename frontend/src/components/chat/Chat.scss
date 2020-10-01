@@ -1,0 +1,192 @@
+@use '../../sass/scrollbar';
+
+.chat {
+    position: relative;
+    flex: .65;
+    display: flex;
+    flex-direction: column;
+
+    &.null {
+      display: grid;
+      place-items: center;
+      & > p {
+        background-color: #1D2C3A;
+        border-radius: 1rem;
+        padding: .25rem .75rem;
+      }
+    }
+
+    & > .header {
+      display: flex;
+      align-items: center;
+      padding: .5rem;
+      height: 3rem;
+
+      background-color: #17212B;
+      border-bottom: 1px solid #0A121B;
+
+      & > .MuiAvatar-root {
+        margin-right: .5rem;
+      }
+
+      & > .user {
+        flex: 1;
+        padding: 0 .5rem;
+
+        & > .members {
+          color: #3e546a;
+        }
+      }
+
+      & > .tools > .MuiButtonBase-root {
+          padding-left: .5rem;
+          padding-right: .5rem;
+      }
+    }
+
+    & > .body {
+      @include scrollbar.hide;
+      position: relative;
+      flex: 1;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      scroll-snap-type: y proximity;
+      padding: 0 .5rem;
+
+      &:hover {
+        @include scrollbar.show;
+      }
+
+      & > .message:last-of-type {
+        scroll-snap-align: end; 
+      }
+
+      & > .message {
+        display: flex;
+        align-items: flex-end;
+        margin: .5rem 0;
+        width: fit-content;
+        max-width: 70%;
+
+        & > .MuiAvatar-root {
+          z-index: 5;
+          margin-right: .5rem;
+        }
+
+        &.system {
+          padding: .1rem 1rem;
+          border-radius: 1rem;
+          margin-left: auto;
+          margin-right: auto;
+          background-color: #1D2C3A;
+        }
+
+        &.owner {
+          margin-left: auto;
+
+          & > .MuiAvatar-root {
+            z-index: 5;
+            margin: unset;
+            margin-left: .5rem;
+          }
+
+          & > .content {
+            background-color: #2B5278;
+            border-radius: .5rem;
+            border-bottom-right-radius: 0;
+
+            &:before, &:after {
+              right: -2rem;
+              left: unset;
+            }
+
+            &:before {
+              background-color: #2B5278;
+            }
+  
+            &:after {
+              border-radius: unset;
+              border-bottom-left-radius: .75rem;
+            }
+  
+            & > .username {
+              color: #DB863B;
+            }
+          }
+        }
+
+        & > .content {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          background-color: #182533;
+          border-radius: .5rem;
+          border-bottom-left-radius: 0;
+          padding: .5rem;
+
+          &:before, &:after {
+            content: '';
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            bottom: 0;
+            left: -2rem;
+          }
+
+          &:before {
+            background-color: #182533;
+            z-index: 1;
+          }
+
+          &:after {
+            background-color: #0E1621;
+            border-bottom-right-radius: .75rem;
+            z-index: 2;
+          }
+
+          & > .username {
+            color: #DB863B;
+          }
+  
+          & > .text {
+            font-size: small;
+            word-wrap: break-word;
+            padding: .25rem 0;
+          }
+  
+          & > .timestamp {
+            margin-left: auto;
+            font-size: x-small;
+            opacity: .5;
+          }
+        }        
+      }
+    }
+
+    & > .message-form {
+      display: flex;
+      align-items: center;
+
+      background-color: #17212B;
+      border-top: 1px solid #0A121B;
+      z-index: 11;
+
+      & > form {
+        flex: 1;
+        & > input {
+          width: 100%;
+          padding: .5rem;
+          border: none;
+          outline: none;
+          background: inherit;
+          color: inherit;
+        }
+        & > button {
+          display: none;
+        }
+      }
+      
+    }
+
+}
+

@@ -1,0 +1,78 @@
+@use '../../sass/input';
+@use '../../sass/button';
+
+.contactCreator {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  place-items: center;
+  
+  & > .backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, .5);
+
+    z-index: 50;
+  }
+
+  & > .content {
+    width: 350px;
+
+    background-color: #17212B;
+    z-index: 100;
+
+    & > .header {
+      position: relative;
+      font-size: larger;
+      padding: 1rem;
+
+      & > .error {
+        position: absolute;
+        height: 2rem;
+        bottom: -1rem;
+
+        display: flex;
+        align-items: center;
+        font-size: small;
+        color: #B53C49;
+        opacity: .8;
+      }
+    }
+
+    & > .form-control {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+
+      & > .MuiSvgIcon-root {
+        opacity: .5;
+      }
+
+      & > input {
+        @include input.reset();
+        width: 100%;
+        margin-left: 1rem;
+        padding: .5rem 0;
+        
+        font-weight: 600;
+        border-bottom: 1px solid #313C49;
+      }
+    }
+
+    & > .footer {
+      display: flex;
+      justify-content: flex-end;
+      padding: .5rem;
+
+      & > button {
+        @include button.hover(#212B35, #2B353F);
+        padding: .5rem;
+        color: #6AB2F2;
+      }
+    }
+  }
+}

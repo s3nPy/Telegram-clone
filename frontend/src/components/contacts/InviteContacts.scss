@@ -1,0 +1,12 @@
+@import './Contacts.scss';
+
+
+.inviteContacts {
+  & > .content > .body > .selected {
+    background-color: #353F49;
+
+    &:hover {
+      background-color: #353F49;
+    }
+  }
+}

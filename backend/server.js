@@ -1,9 +1,15 @@
 const config = require('config')
 const mongoose = require('mongoose')
 const cors = require('cors')
+const fs = require('fs')
 const express = require('express')
 const app = express()
 const server = require('http').createServer(app)
+// const server = require('https').createServer({
+//   enableTrace: true,
+//   key: fs.readFileSync('key'),
+//   cert: fs.readFileSync('cert')
+// }, app)
 const io = require('./io')(server)
 
 

@@ -19,7 +19,7 @@ function App() {
 
 
   useEffect( () => {
-    const socket = io('http://localhost:9000')
+    const socket = io('http://localhost:9000/')
     if(token) {
       socket.emit('authentication', token)
       socket.on('message', msg => {

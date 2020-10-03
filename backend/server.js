@@ -1,19 +1,21 @@
 const config = require('config')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const fs = require('fs')
+const path = require('path')
 const express = require('express')
 const app = express()
 const server = require('http').createServer(app)
-// const server = require('https').createServer({
-//   enableTrace: true,
-//   key: fs.readFileSync('key'),
-//   cert: fs.readFileSync('cert')
-// }, app)
 const io = require('./io')(server)
 
 
 const PORT = config.get('server.port') || 9000
+
+try {
+  const staticPath = config.get('server.staticPath')
+  app.use(express.static( path.resolve(__dirname, staticPath) ))
+} catch( error ) {
+  console.log('Server isn\'t serving frontend files.')
+}
 
 app.use(cors( config.get('cors') ))
 app.use(express.json())
@@ -32,7 +34,7 @@ async function start() {
 
     io.watch()
 
-    server.listen(PORT, () => {
+    server.listen(PORT, 'localhost', () => {
       console.log(`Server is listening on localhost:${PORT}`)
     })
   } catch (error) {

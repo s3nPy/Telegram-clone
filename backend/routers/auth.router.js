@@ -6,7 +6,7 @@ const config = require('config')
 const User = require('../models/User')
 const Chat = require('../models/Chat')
 
-const COMMON_CHAT_ID = config.get('mongodb.commonChatId')
+// const COMMON_CHAT_ID = config.get('mongodb.commonChatId')
 
 const authValChain = [
   body('username').exists().isLength({min: 5, max: 20}),
@@ -57,13 +57,13 @@ router.post('/register', authValChain, async (req, res) => {
     const user = await User.create({
       username: req.body.username,
       password: passwordHash,
-      chats: [COMMON_CHAT_ID]
+      // chats: [COMMON_CHAT_ID]
     })
 
-    // add member to the common chat
-    const chat = await Chat.findById(COMMON_CHAT_ID)
-    chat.members.push(user._id)
-    await chat.save()
+    // // add member to the common chat
+    // const chat = await Chat.findById(COMMON_CHAT_ID)
+    // chat.members.push(user._id)
+    // await chat.save()
 
     const token = jwt.sign(
       {userId: user._id},
